@@ -2,12 +2,15 @@ name: Auto Update Playlist
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Chạy tự động mỗi giờ 1 lần
-  workflow_dispatch:     # Cho phép bấm nút chạy thủ công
+    - cron: '*/30 * * * *'  # Chạy tự động 30 phút một lần
+  workflow_dispatch:        # Nút bấm chạy thủ công bằng tay
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -23,10 +26,15 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run script
-        run: python main.py
+      # Bước quan trọng nhất để sửa lỗi Exit Code 2 khi dùng Playwright
+      - name: Install Playwright Browsers
+        run: |
+          python -m playwright install --with-deps chromium
 
-      - name: Commit and push changes
+      - name: Run Scraper Script
+        run: python scraper.py
+
+      - name: Commit and Push M3U File
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
