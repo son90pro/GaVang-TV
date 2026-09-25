@@ -1,5 +1,6 @@
 import time
 import re
+import json
 from datetime import datetime, timezone, timedelta
 from urllib.parse import quote
 from playwright.sync_api import sync_playwright
@@ -8,7 +9,7 @@ WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
 BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 
-# Đổi tên Group Name theo yêu cầu của anh Sơn
+# Tên nhóm danh mục hiển thị trên ứng dụng IPTV
 GROUP_NAME = "🐔 Vàng 33 TV"
 
 # Bảng tra cứu cờ quốc gia chuẩn hóa
@@ -51,49 +52,56 @@ def get_team_logo_url(teams_str: str) -> str:
 
 def clean_word(w: str) -> str:
     w_low = w.lower()
-    if w_low in ['nu', 'nữ']: return 'Nữ'
-    if w_low in ['nam']: return 'Nam'
+    if w_low in ['nu', 'nữ', 'women']: return 'Women' if w_low == 'women' else 'Nữ'
+    if w_low in ['nam', 'men']: return 'Men' if w_low == 'men' else 'Nam'
     if w_low in ['u23', 'u21', 'u20', 'u19', 'u18', 'u17', 'u16', 'u15']: return w.upper()
     if w_low in ['ir', 'uae', 'usa', 'uk']: return w.upper()
     return w.capitalize()
 
 def parse_teams_from_url(url: str) -> str:
     try:
-        match = re.search(r'/(?:truc-tiep|match|live|room|xem)/([^/?#]+)', url)
-        if not match:
+        match = re.search(r'/(?:truc-tiep|match|live|room|xem|phong|link|stream|xem-bong-da|truc-tiep-bong-da)/([^/?#]+)', url)
+        if match:
+            slug = match.group(1)
+        else:
+            parts_url = url.split('/')
+            slug = next((p for p in parts_url if '-vs-' in p), "")
+            
+        if not slug or '-vs-' not in slug:
             return ""
-        slug = match.group(1)
-        
+
         parts = slug.split('-vs-')
         if len(parts) != 2:
             return ""
-        
+
         team1_slug, team2_slug = parts[0], parts[1]
+
+        # Làm sạch tên đội 1 (bỏ tiền tố BLV)
+        team1_slug = re.sub(r'^(?:blv-)?(?:ga|caster)-(?:sieu-[a-z0-9]+|[a-z0-9]+)-', '', team1_slug, flags=re.IGNORECASE)
+        team1_slug = re.sub(r'^blv-[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
         
-        team1_slug = re.sub(r'^(?:blv-)?ga-(?:sieu-)?[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
+        # Làm sạch tên đội 2 (bỏ hậu tố thời gian, ngày)
         team2_slug = re.sub(r'-luc-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-ngay-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
+        team2_slug = re.sub(r'-\d{3,4}$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-[a-z0-9]{8,35}$', '', team2_slug, flags=re.IGNORECASE)
-        
-        t1 = " ".join([clean_word(w) for w in team1_slug.split('-')])
-        t2 = " ".join([clean_word(w) for w in team2_slug.split('-')])
-        
-        if t1 and t2 and len(t1) > 1 and len(t2) > 1:
+
+        t1 = " ".join([clean_word(w) for w in team1_slug.split('-') if w])
+        t2 = " ".join([clean_word(w) for w in team2_slug.split('-') if w])
+
+        if t1 and t2:
             return f"{t1} vs {t2}"
     except Exception:
         pass
     return ""
 
 def parse_date_info(url: str, text: str, default_date: str) -> str:
-    """Tách thông tin ngày từ URL hoặc Text, nếu không tìm thấy sẽ dùng default_date"""
     try:
-        # Tìm dạng -ngay-25-09- trong URL
         date_match = re.search(r'ngay-(\d{1,2})[-_](\d{1,2})', url, re.IGNORECASE)
         if date_match:
             d, m = date_match.group(1).zfill(2), date_match.group(2).zfill(2)
             return f"{d}/{m}"
             
-        # Tìm dạng ngày DD/MM trong text
         text_date_match = re.search(r'\b(\d{1,2})[/.-](\d{1,2})\b', text)
         if text_date_match:
             d, m = text_date_match.group(1).zfill(2), text_date_match.group(2).zfill(2)
@@ -145,7 +153,9 @@ def get_match_details(context, match_url):
             let tStr = "";
             let liveState = false;
             const fullBody = document.body.innerText || '';
-            if (/(hiệp|phút|đang diễn ra|trực tiếp|live)/i.test(fullBody)) {
+            
+            # Kiểm tra các từ khóa nhận diện trận đang diễn ra (LIVE)
+            if (/(hiệp|phút|đang diễn ra|đang đá|trực tiếp|live|\d+['’])/i.test(fullBody)) {
                 liveState = true;
             }
 
@@ -172,7 +182,6 @@ def get_match_details(context, match_url):
     return match_info
 
 def run_scraper():
-    # Lấy ngày hôm nay theo giờ Việt Nam (UTC+7)
     vn_tz = timezone(timedelta(hours=7))
     today_str = datetime.now(vn_tz).strftime("%d/%m")
     
@@ -196,13 +205,27 @@ def run_scraper():
             print(f"[*] Đang tải trang Gà Vàng 33 TV: {BASE_URL}")
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             
-            for _ in range(3):
+            # Kích hoạt nhấp chọn Tab "Tất cả" hoặc "Đang diễn ra" để nạp 100% danh sách
+            try:
+                page.evaluate('''() => {
+                    const tabs = Array.from(document.querySelectorAll('button, div, span, a')).filter(el => {
+                        const t = (el.innerText || '').trim().toLowerCase();
+                        return t === 'tất cả' || t === 'đang diễn ra' || t === 'trực tiếp' || t === 'live';
+                    });
+                    tabs.forEach(t => { try { t.click(); } catch(e){} });
+                }''')
+                time.sleep(1)
+            except Exception:
+                pass
+
+            # Cuộn trang nhiều lần để nạp các trận đấu cuộn động
+            for _ in range(4):
                 page.evaluate("window.scrollBy(0, 800)")
                 time.sleep(0.5)
 
             raw_matches = page.evaluate('''() => {
                 const matches = [];
-                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"]'));
+                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"], a[href*="/phong/"], a[href*="/truc-tiep-bong-da/"], a[href*="/xem-bong-da/"]'));
                 const seenUrls = new Set();
 
                 links.forEach(link => {
@@ -216,7 +239,7 @@ def run_scraper():
                     let card = link;
                     let parent = link.parentElement;
                     while (parent && parent.tagName !== 'BODY') {
-                        if (parent.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"]').length === 1) {
+                        if (parent.querySelectorAll('a').length === 1) {
                             card = parent;
                             parent = parent.parentElement;
                         } else {
@@ -234,9 +257,33 @@ def run_scraper():
 
                 return matches;
             }''')
+            
+            # Đọc đối tượng Next.js __NEXT_DATA__ nếu có để bổ sung các trận đấu ngầm
+            try:
+                next_data_json = page.evaluate('''() => {
+                    const el = document.getElementById('__NEXT_DATA__');
+                    return el ? el.innerText : null;
+                }''')
+                if next_data_json:
+                    next_data = json.loads(next_data_json)
+                    page_props = next_data.get('props', {}).get('pageProps', {})
+                    matches_json = page_props.get('matches', []) or []
+                    for m in matches_json:
+                        if isinstance(m, dict):
+                            match_slug = m.get('slug') or m.get('id')
+                            if match_slug:
+                                full_u = f"{BASE_URL}/truc-tiep/{match_slug}" if not str(match_slug).startswith('http') else match_slug
+                                if not any(x['url'] == full_u for x in raw_matches):
+                                    raw_matches.append({
+                                        'url': full_u,
+                                        'fullText': f"{m.get('home_name', '')} vs {m.get('away_name', '')} {m.get('match_time', '')}"
+                                    })
+            except Exception:
+                pass
+
             page.close()
 
-            print(f"[*] Quét được {len(raw_matches)} link trận đấu. Đang phân tích...")
+            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang phân tích chi tiết...")
 
             parsed_items = []
             for item in raw_matches:
@@ -247,13 +294,14 @@ def run_scraper():
 
                 details = get_match_details(context, url)
 
-                # Lấy thời gian & ngày
                 raw_time_text = details['time_str'] if details['time_str'] else text
                 time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', raw_time_text, re.I)
-                extracted_time = time_match.group(1).replace('h', ':') if time_match else "Trực tiếp"
+                extracted_time = time_match.group(1).replace('h', ':') if time_match else "00:00"
                 match_date = parse_date_info(url, text, today_str)
 
-                # Lấy tên BLV
+                # Kiểm tra trạng thái LIVE
+                is_currently_live = details['is_live'] or any(k in text.lower() for k in ["hiệp", "phút", "đang đá", "live", "đang diễn ra", "trực tiếp"])
+
                 blv_name = ""
                 blv_match = re.search(r'((?:Gà|BLV|Caster)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
                 if blv_match:
@@ -270,11 +318,10 @@ def run_scraper():
                 logo = get_team_logo_url(teams_str)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
-                is_currently_live = details['is_live'] or any(k in text.lower() for k in ["hiệp", "phút", "đang đá", "live"])
-
-                # Định dạng hiển thị bao gồm Ngày + Giờ: [25/09 - 13:00] Tên trận (BLV)
-                if extracted_time == "Trực tiếp":
-                    full_title = f"[{match_date} - Trực tiếp] {teams_str}{blv_suffix}".strip()
+                # Tạo định dạng tiêu đề tiêu chuẩn
+                if is_currently_live:
+                    live_prefix = f"🔴 LIVE {extracted_time}" if extracted_time != "00:00" else "🔴 LIVE"
+                    full_title = f"[{match_date} - {live_prefix}] {teams_str}{blv_suffix}".strip()
                 else:
                     full_title = f"[{match_date} - {extracted_time}] {teams_str}{blv_suffix}".strip()
 
@@ -283,13 +330,15 @@ def run_scraper():
                     "logo": logo,
                     "url": url,
                     "m3u8_url": details['m3u8_url'],
-                    "is_live": is_currently_live
+                    "is_live": is_currently_live,
+                    "time": extracted_time
                 })
+
+            # Sắp xếp các trận 🔴 LIVE lên đầu danh sách
+            parsed_items.sort(key=lambda x: (not x['is_live'], x['time']))
 
             seen_urls = set()
             title_tracker = {}
-
-            parsed_items.sort(key=lambda x: x['is_live'], reverse=True)
 
             for p_item in parsed_items:
                 if p_item['url'] in seen_urls:
@@ -327,7 +376,7 @@ def run_scraper():
             f.write(f'#EXTVLCOPT:http-referrer={BASE_URL}/\n')
             f.write(f'{stream_url}|User-Agent=Mozilla/5.0&Referer={BASE_URL}/\n\n')
 
-    print(f"[*] Đã xuất {len(final_matches)} trận vào file {OUTPUT_FILE}")
+    print(f"[*] Đã xuất {len(final_matches)} trận vào file {OUTPUT_FILE} (Group: {GROUP_NAME})")
 
 if __name__ == "__main__":
     run_scraper()
