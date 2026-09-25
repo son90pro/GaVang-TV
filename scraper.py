@@ -110,6 +110,38 @@ def parse_date_info(url: str, text: str, default_date: str) -> str:
         pass
     return default_date
 
+def parse_time_robust(url: str, text: str) -> str:
+    """Trích xuất thời gian chính xác từ URL slug, text, hoặc DOM"""
+    # 1. Tìm định dạng HH:MM hoặc HHhMM trong text
+    text_time = re.search(r'\b(2[0-3]|[0-1]?\d)[:h](\d{2})\b', text, re.IGNORECASE)
+    if text_time:
+        hh = text_time.group(1).zfill(2)
+        mm = text_time.group(2)
+        return f"{hh}:{mm}"
+
+    # 2. Tìm trong URL định dạng luc-1300, luc-1730, luc-2000
+    url_luc_4 = re.search(r'luc[-_]?(2[0-3]|[0-1]\d)(\d{2})', url, re.IGNORECASE)
+    if url_luc_4:
+        hh = url_luc_4.group(1).zfill(2)
+        mm = url_luc_4.group(2)
+        return f"{hh}:{mm}"
+
+    # 3. Tìm trong URL định dạng -1700, -1300, -1730 trước ngay- hoặc ở cuối slug
+    url_hhmm = re.search(r'(?:luc[-_]?)?(2[0-3]|[0-1]\d)(\d{2})(?:[-_]|$)', url, re.IGNORECASE)
+    if url_hhmm:
+        hh = url_hhmm.group(1).zfill(2)
+        mm = url_hhmm.group(2)
+        return f"{hh}:{mm}"
+
+    # 4. Tìm 4 chữ số thời gian trong text
+    text_digit = re.search(r'\b(2[0-3]|[0-1]\d)(\d{2})\b', text)
+    if text_digit:
+        hh = text_digit.group(1).zfill(2)
+        mm = text_digit.group(2)
+        return f"{hh}:{mm}"
+
+    return ""
+
 def get_match_details(context, match_url):
     page = context.new_page()
     page.route("**/*.{png,jpg,jpeg,svg,css,woff,woff2}", lambda route: route.abort())
@@ -153,9 +185,7 @@ def get_match_details(context, match_url):
             let tStr = "";
             let liveState = false;
             const fullBody = document.body.innerText || '';
-            
-            # Kiểm tra các từ khóa nhận diện trận đang diễn ra (LIVE)
-            if (/(hiệp|phút|đang diễn ra|đang đá|trực tiếp|live|\d+['’])/i.test(fullBody)) {
+            if (/(hiệp|phút|đang diễn ra|đang đá|trực tiếp|live|\\d+['’])/i.test(fullBody)) {
                 liveState = true;
             }
 
@@ -205,7 +235,6 @@ def run_scraper():
             print(f"[*] Đang tải trang Gà Vàng 33 TV: {BASE_URL}")
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             
-            # Kích hoạt nhấp chọn Tab "Tất cả" hoặc "Đang diễn ra" để nạp 100% danh sách
             try:
                 page.evaluate('''() => {
                     const tabs = Array.from(document.querySelectorAll('button, div, span, a')).filter(el => {
@@ -218,7 +247,6 @@ def run_scraper():
             except Exception:
                 pass
 
-            # Cuộn trang nhiều lần để nạp các trận đấu cuộn động
             for _ in range(4):
                 page.evaluate("window.scrollBy(0, 800)")
                 time.sleep(0.5)
@@ -257,8 +285,8 @@ def run_scraper():
 
                 return matches;
             }''')
-            
-            # Đọc đối tượng Next.js __NEXT_DATA__ nếu có để bổ sung các trận đấu ngầm
+
+            # Trích xuất dữ liệu Next.js bổ sung
             try:
                 next_data_json = page.evaluate('''() => {
                     const el = document.getElementById('__NEXT_DATA__');
@@ -283,7 +311,7 @@ def run_scraper():
 
             page.close()
 
-            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang phân tích chi tiết...")
+            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang trích xuất thời gian & phân tích...")
 
             parsed_items = []
             for item in raw_matches:
@@ -294,12 +322,17 @@ def run_scraper():
 
                 details = get_match_details(context, url)
 
+                # Trích xuất thời gian chính xác
                 raw_time_text = details['time_str'] if details['time_str'] else text
-                time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', raw_time_text, re.I)
-                extracted_time = time_match.group(1).replace('h', ':') if time_match else "00:00"
+                extracted_time = parse_time_robust(url, raw_time_text)
+                
+                # Nếu vẫn trống, dùng mặc định theo buổi
+                if not extracted_time:
+                    extracted_time = "19:00"
+
                 match_date = parse_date_info(url, text, today_str)
 
-                # Kiểm tra trạng thái LIVE
+                # Trạng thái LIVE
                 is_currently_live = details['is_live'] or any(k in text.lower() for k in ["hiệp", "phút", "đang đá", "live", "đang diễn ra", "trực tiếp"])
 
                 blv_name = ""
@@ -318,10 +351,9 @@ def run_scraper():
                 logo = get_team_logo_url(teams_str)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
-                # Tạo định dạng tiêu đề tiêu chuẩn
+                # Định dạng hiển thị chuẩn: [25/09 - 13:00] China Women vs Vietnam Women (Gà Siêu Nhí)
                 if is_currently_live:
-                    live_prefix = f"🔴 LIVE {extracted_time}" if extracted_time != "00:00" else "🔴 LIVE"
-                    full_title = f"[{match_date} - {live_prefix}] {teams_str}{blv_suffix}".strip()
+                    full_title = f"[{match_date} - 🔴 LIVE {extracted_time}] {teams_str}{blv_suffix}".strip()
                 else:
                     full_title = f"[{match_date} - {extracted_time}] {teams_str}{blv_suffix}".strip()
 
@@ -334,7 +366,7 @@ def run_scraper():
                     "time": extracted_time
                 })
 
-            # Sắp xếp các trận 🔴 LIVE lên đầu danh sách
+            # Sắp xếp các trận 🔴 LIVE lên đầu, sau đó xếp theo thời gian thi đấu
             parsed_items.sort(key=lambda x: (not x['is_live'], x['time']))
 
             seen_urls = set()
