@@ -1,14 +1,15 @@
 import time
 import re
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from urllib.parse import quote
 from playwright.sync_api import sync_playwright
 
 WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
 BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
-# Cập nhật tên nhóm để hiển thị chuẩn tab '🔥 TRỰC TIẾP HÔM NAY' trên ứng dụng
-GROUP_NAME = "🔥 TRỰC TIẾP HÔM NAY"
+
+# Đổi tên Group Name theo yêu cầu của anh Sơn
+GROUP_NAME = "🐔 Vàng 33 TV"
 
 # Bảng tra cứu cờ quốc gia chuẩn hóa
 LOGOS = {
@@ -83,6 +84,24 @@ def parse_teams_from_url(url: str) -> str:
         pass
     return ""
 
+def parse_date_info(url: str, text: str, default_date: str) -> str:
+    """Tách thông tin ngày từ URL hoặc Text, nếu không tìm thấy sẽ dùng default_date"""
+    try:
+        # Tìm dạng -ngay-25-09- trong URL
+        date_match = re.search(r'ngay-(\d{1,2})[-_](\d{1,2})', url, re.IGNORECASE)
+        if date_match:
+            d, m = date_match.group(1).zfill(2), date_match.group(2).zfill(2)
+            return f"{d}/{m}"
+            
+        # Tìm dạng ngày DD/MM trong text
+        text_date_match = re.search(r'\b(\d{1,2})[/.-](\d{1,2})\b', text)
+        if text_date_match:
+            d, m = text_date_match.group(1).zfill(2), text_date_match.group(2).zfill(2)
+            return f"{d}/{m}"
+    except Exception:
+        pass
+    return default_date
+
 def get_match_details(context, match_url):
     page = context.new_page()
     page.route("**/*.{png,jpg,jpeg,svg,css,woff,woff2}", lambda route: route.abort())
@@ -153,7 +172,10 @@ def get_match_details(context, match_url):
     return match_info
 
 def run_scraper():
-    today_str = datetime.now().strftime("%d/%m")
+    # Lấy ngày hôm nay theo giờ Việt Nam (UTC+7)
+    vn_tz = timezone(timedelta(hours=7))
+    today_str = datetime.now(vn_tz).strftime("%d/%m")
+    
     final_matches = []
     
     with sync_playwright() as p:
@@ -225,10 +247,13 @@ def run_scraper():
 
                 details = get_match_details(context, url)
 
+                # Lấy thời gian & ngày
                 raw_time_text = details['time_str'] if details['time_str'] else text
                 time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', raw_time_text, re.I)
                 extracted_time = time_match.group(1).replace('h', ':') if time_match else "Trực tiếp"
+                match_date = parse_date_info(url, text, today_str)
 
+                # Lấy tên BLV
                 blv_name = ""
                 blv_match = re.search(r'((?:Gà|BLV|Caster)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
                 if blv_match:
@@ -246,10 +271,12 @@ def run_scraper():
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
                 is_currently_live = details['is_live'] or any(k in text.lower() for k in ["hiệp", "phút", "đang đá", "live"])
-                status_icon = "🟢 " if is_currently_live else "🟡 "
 
-                # Đổi định dạng hiển thị tiêu đề để đẹp chuẩn như ảnh mẫu [20:00] Tên trận
-                full_title = f"[{extracted_time}] {teams_str}{blv_suffix}".strip()
+                # Định dạng hiển thị bao gồm Ngày + Giờ: [25/09 - 13:00] Tên trận (BLV)
+                if extracted_time == "Trực tiếp":
+                    full_title = f"[{match_date} - Trực tiếp] {teams_str}{blv_suffix}".strip()
+                else:
+                    full_title = f"[{match_date} - {extracted_time}] {teams_str}{blv_suffix}".strip()
 
                 parsed_items.append({
                     "title": full_title,
@@ -304,4 +331,4 @@ def run_scraper():
 
 if __name__ == "__main__":
     run_scraper()
-                  
+    
