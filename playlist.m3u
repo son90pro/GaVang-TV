@@ -1,8 +1,0 @@
-#EXTM3U tvg-shift="0"
-
-#EXTINF:-1 group-title="Gà Vàng 33 TV" tvg-logo="https://flagcdn.com/w320/cn.png", 🟢 13:00 25/09 ⚽ China Women vs Vietnam Women (Gà Siêu Nhí) [hls]
-https://example.com/live1.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
-#EXTINF:-1 group-title="Gà Vàng 33 TV" tvg-logo="https://flagcdn.com/w320/uz.png", 🟢 12:00 25/09 ⚽ Uzbekistan U23 vs Saudi Arabia U23 (Gà Siêu Tổ) [flv]
-https://example.com/live2.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
-#EXTINF:-1 group-title="Gà Vàng 33 TV" tvg-logo="https://flagcdn.com/w320/bd.png", 🟢 16:00 25/09 ⚽ Bangladesh vs Malaysia (Gà Siêu Kiều) [flv]
-https://example.com/live3.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
