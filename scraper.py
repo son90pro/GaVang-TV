@@ -53,7 +53,7 @@ COUNTRY_FLAGS = {
 }
 
 def get_team_logo_url(teams_str: str) -> str:
-    """Tự động tìm Cờ quốc gia 100% hoặc sử dụng Logo Gà Vàng mặc định"""
+    """Tự động tìm Cờ quốc gia 100% hoặc sử dụng Logo Gà Vàng TV làm mặc định"""
     t_lower = teams_str.lower()
     
     # 1. Quét tìm cờ Quốc gia xuất hiện trong tên trận đấu
@@ -62,7 +62,7 @@ def get_team_logo_url(teams_str: str) -> str:
         if re.search(pattern, t_lower):
             return f"https://flagcdn.com/w320/{code}.png"
 
-    # 2. Sử dụng Logo Gà Vàng TV làm mặc định cho tất cả trận đấu CLB / Không phải ĐTQG
+    # 2. Sử dụng Logo Gà Vàng TV làm logo mặc định cho trận đấu
     return GAVANG_LOGO
 
 def clean_word(w: str) -> str:
@@ -339,9 +339,9 @@ def run_scraper():
         finally:
             browser.close()
 
-    # Xuất file M3U Playlist
+    # Xuất file M3U Playlist (Khai báo tvg-logo & logo ở thẻ EXTM3U để app nhận diện làm ảnh đại diện)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write('#EXTM3U tvg-shift="0"\n\n')
+        f.write(f'#EXTM3U tvg-shift="0" tvg-logo="{GAVANG_LOGO}" logo="{GAVANG_LOGO}"\n\n')
 
         for item in final_matches:
             logo_attr = f'tvg-logo="{item["logo"]}"'
