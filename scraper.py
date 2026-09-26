@@ -10,9 +10,25 @@ BASE_URL = "https://gavang33.live"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "🐔 Vàng 33 TV"
 
+# Từ khóa nhận diện ảnh avatar BLV để LỌC BỎ
+BLV_KEYWORDS = ['blv', 'caster', 'avatar', 'ga-', 'sieu-', 'commentator', 'mc-', 'admin', 'user']
+
 # Bảng tra cứu cờ quốc gia mở rộng
 LOGOS = {
+    # Châu Á & Đông Nam Á
+    "vietnam": "https://flagcdn.com/w320/vn.png", "việt nam": "https://flagcdn.com/w320/vn.png",
+    "philippines": "https://flagcdn.com/w320/ph.png",
+    "thailand": "https://flagcdn.com/w320/th.png", "thái lan": "https://flagcdn.com/w320/th.png",
+    "pakistan": "https://flagcdn.com/w320/pk.png",
+    "indonesia": "https://flagcdn.com/w320/id.png", "malaysia": "https://flagcdn.com/w320/my.png",
+    "japan": "https://flagcdn.com/w320/jp.png", "nhật bản": "https://flagcdn.com/w320/jp.png",
+    "south korea": "https://flagcdn.com/w320/kr.png", "hàn quốc": "https://flagcdn.com/w320/kr.png",
+    "china": "https://flagcdn.com/w320/cn.png", "trung quốc": "https://flagcdn.com/w320/cn.png",
+    "nantong zhiyun": "https://flagcdn.com/w320/cn.png", "changchun yatai": "https://flagcdn.com/w320/cn.png",
+
     # CONCACAF & Bắc/Trung Mỹ
+    "el salvador": "https://flagcdn.com/w320/sv.png",
+    "martinique": "https://flagcdn.com/w320/mq.png",
     "barbados": "https://flagcdn.com/w320/bb.png",
     "saint lucia": "https://flagcdn.com/w320/lc.png",
     "bonaire": "https://flagcdn.com/w320/bq.png",
@@ -21,44 +37,35 @@ LOGOS = {
     "guatemala": "https://flagcdn.com/w320/gt.png",
     "honduras": "https://flagcdn.com/w320/hn.png",
     "suriname": "https://flagcdn.com/w320/sr.png",
-    "el salvador": "https://flagcdn.com/w320/sv.png",
-    "martinique": "https://flagcdn.com/w320/mq.png",
     "mexico": "https://flagcdn.com/w320/mx.png",
     "usa": "https://flagcdn.com/w320/us.png", "mỹ": "https://flagcdn.com/w320/us.png",
-    "costa rica": "https://flagcdn.com/w320/cr.png",
-    "canada": "https://flagcdn.com/w320/ca.png",
-    "panama": "https://flagcdn.com/w320/pa.png",
-    "curacao": "https://flagcdn.com/w320/cw.png",
 
-    # Châu Âu
+    # Châu Âu & Nga
+    "russia": "https://flagcdn.com/w320/ru.png", "nga": "https://flagcdn.com/w320/ru.png",
+    "fk chelyabinsk": "https://flagcdn.com/w320/ru.png", "chelyabinsk": "https://flagcdn.com/w320/ru.png",
+    "yenisey": "https://flagcdn.com/w320/ru.png",
     "netherlands": "https://flagcdn.com/w320/nl.png", "hà lan": "https://flagcdn.com/w320/nl.png",
     "germany": "https://flagcdn.com/w320/de.png", "đức": "https://flagcdn.com/w320/de.png",
     "spain": "https://flagcdn.com/w320/es.png", "tây ban nha": "https://flagcdn.com/w320/es.png",
     "france": "https://flagcdn.com/w320/fr.png", "pháp": "https://flagcdn.com/w320/fr.png",
     "italy": "https://flagcdn.com/w320/it.png", "ý": "https://flagcdn.com/w320/it.png",
-    "portugal": "https://flagcdn.com/w320/pt.png", "bồ đào nha": "https://flagcdn.com/w320/pt.png",
     "england": "https://flagcdn.com/w320/gb-eng.png", "anh": "https://flagcdn.com/w320/gb-eng.png",
-    "wales": "https://flagcdn.com/w320/gb-wls.png", "scotland": "https://flagcdn.com/w320/gb-sct.png",
-    "russia": "https://flagcdn.com/w320/ru.png", "nga": "https://flagcdn.com/w320/ru.png",
-    "chelyabinsk": "https://flagcdn.com/w320/ru.png", "yenisey": "https://flagcdn.com/w320/ru.png",
-
-    # Châu Á & Đông Nam Á
-    "vietnam": "https://flagcdn.com/w320/vn.png", "việt nam": "https://flagcdn.com/w320/vn.png",
-    "thailand": "https://flagcdn.com/w320/th.png", "thái lan": "https://flagcdn.com/w320/th.png",
-    "indonesia": "https://flagcdn.com/w320/id.png", "malaysia": "https://flagcdn.com/w320/my.png",
-    "japan": "https://flagcdn.com/w320/jp.png", "nhật bản": "https://flagcdn.com/w320/jp.png",
-    "south korea": "https://flagcdn.com/w320/kr.png", "hàn quốc": "https://flagcdn.com/w320/kr.png",
-    "china": "https://flagcdn.com/w320/cn.png", "trung quốc": "https://flagcdn.com/w320/cn.png",
 
     # Nam Mỹ
     "brazil": "https://flagcdn.com/w320/br.png", "argentina": "https://flagcdn.com/w320/ar.png",
-    "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png",
-    "colombia": "https://flagcdn.com/w320/co.png", "chile": "https://flagcdn.com/w320/cl.png"
+    "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png"
 }
 
+def is_blv_avatar(url_str: str) -> bool:
+    """Kiểm tra xem URL ảnh có phải là Avatar của BLV hay không"""
+    if not url_str:
+        return True
+    u_low = url_str.lower()
+    return any(k in u_low for k in BLV_KEYWORDS)
+
 def get_team_logo_url(teams_str: str, web_logo_url: str = "") -> str:
-    """Ưu tiên lấy logo cào trực tiếp từ web, nếu không có mới tìm trong LOGOS"""
-    if web_logo_url and not web_logo_url.startswith("data:image"):
+    """Ưu tiên lấy logo từ WEB (nếu không phải ảnh BLV), nếu không có thì tra từ điển LOGOS"""
+    if web_logo_url and not is_blv_avatar(web_logo_url) and not web_logo_url.startswith("data:image"):
         if web_logo_url.startswith("//"):
             return "https:" + web_logo_url
         elif web_logo_url.startswith("http"):
@@ -66,10 +73,12 @@ def get_team_logo_url(teams_str: str, web_logo_url: str = "") -> str:
         elif web_logo_url.startswith("/"):
             return urljoin(BASE_URL, web_logo_url)
 
+    # Tra cứu chính xác theo tên đội bóng / quốc gia
     t_lower = teams_str.lower()
     for key, url in LOGOS.items():
         if key in t_lower:
             return url
+            
     return "https://flagcdn.com/w320/un.png"
 
 def clean_word(w: str) -> str:
@@ -77,7 +86,7 @@ def clean_word(w: str) -> str:
     if w_low in ['nu', 'nữ', 'women']: return 'Women' if w_low == 'women' else 'Nữ'
     if w_low in ['nam', 'men']: return 'Men' if w_low == 'men' else 'Nam'
     if w_low in ['u23', 'u21', 'u20', 'u19', 'u18', 'u17', 'u16', 'u15']: return w.upper()
-    if w_low in ['ir', 'uae', 'usa', 'uk']: return w.upper()
+    if w_low in ['ir', 'uae', 'usa', 'uk', 'fk']: return w.upper()
     return w.capitalize()
 
 def parse_teams_from_url(url: str) -> str:
@@ -165,7 +174,6 @@ def get_match_details(context, match_url):
         page.goto(match_url, timeout=15000, wait_until="domcontentloaded")
         time.sleep(1.5)
         
-        # Click kích hoạt Player để bắt luồng video thực tế
         for selector in ['.play-btn', '.btn-play', '#player', 'iframe', 'video', '.player-wrapper', 'button']:
             try:
                 page.click(selector, timeout=800)
@@ -246,7 +254,7 @@ def run_scraper():
                 page.evaluate("window.scrollBy(0, 800)")
                 time.sleep(0.5)
 
-            # Cào đồng thời Link, Text và Ảnh Logo trực tiếp từ DOM
+            # Cào dữ liệu DOM và loại bỏ ngay ảnh avatar BLV ở JS level
             raw_matches = page.evaluate('''() => {
                 const matches = [];
                 const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"], a[href*="/phong/"], a[href*="/truc-tiep-bong-da/"], a[href*="/xem-bong-da/"]'));
@@ -271,10 +279,15 @@ def run_scraper():
                         }
                     }
 
+                    // Tìm ảnh logo hợp lệ (bỏ qua ảnh có tên chứa từ khóa avatar BLV)
                     let logoUrl = "";
-                    const img = card.querySelector('img');
-                    if (img) {
-                        logoUrl = img.src || img.getAttribute('data-src') || "";
+                    const imgs = Array.from(card.querySelectorAll('img'));
+                    for (let img of imgs) {
+                        const src = img.src || img.getAttribute('data-src') || "";
+                        if (src && !/(blv|caster|avatar|ga-|sieu-|commentator)/i.test(src)) {
+                            logoUrl = src;
+                            break;
+                        }
                     }
 
                     matches.push({
@@ -288,7 +301,7 @@ def run_scraper():
             }''')
 
             page.close()
-            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang phân tích luồng phát...")
+            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang ghép logo và sắp xếp...")
 
             parsed_items = []
             for item in raw_matches:
@@ -312,7 +325,7 @@ def run_scraper():
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
                 teams_str = parse_teams_from_url(url) or "Trận đấu Trực Tiếp"
 
-                # Lấy Logo chuẩn xác từ web hoặc bảng LOGOS
+                # Lấy logo đội bóng (không còn bị nhầm sang avatar BLV)
                 logo = get_team_logo_url(teams_str, web_logo)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
@@ -362,7 +375,6 @@ def run_scraper():
         for item in final_matches:
             logo_attr = f'tvg-logo="{item["logo"]}"'
             
-            # Ưu tiên link M3U8 trực tiếp qua Proxy Worker
             if item.get('m3u8_url'):
                 stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
             else:
