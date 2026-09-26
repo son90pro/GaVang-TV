@@ -9,6 +9,7 @@ WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
 BASE_URL = "https://gavang33.live"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "🐔 Vàng 33 TV"
+GAVANG_LOGO = "https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg"
 
 # Từ điển cờ TẤT CẢ quốc gia & vùng lãnh thổ trên thế giới (Tiếng Anh & Tiếng Việt)
 COUNTRY_FLAGS = {
@@ -52,24 +53,17 @@ COUNTRY_FLAGS = {
 }
 
 def get_team_logo_url(teams_str: str) -> str:
-    """Tự động tìm Cờ quốc gia 100% hoặc tạo Badge chữ nghệ thuật cho CLB"""
+    """Tự động tìm Cờ quốc gia 100% hoặc sử dụng Logo Gà Vàng mặc định"""
     t_lower = teams_str.lower()
     
     # 1. Quét tìm cờ Quốc gia xuất hiện trong tên trận đấu
     for country_name, code in COUNTRY_FLAGS.items():
-        # Dùng regex bound để tránh khớp nhầm từ con
         pattern = r'\b' + re.escape(country_name) + r'\b'
         if re.search(pattern, t_lower):
             return f"https://flagcdn.com/w320/{code}.png"
 
-    # 2. Nếu là Câu Lạc Bộ (Không có trong từ điển Cờ ĐTQG):
-    # Tạo Badge biểu tượng đẹp mắt theo tên viết tắt của Đội thay vì dùng hình quả bóng đen
-    clean_title = re.sub(r'\b(vs|v|nữ|women|u23|u21|u19|u17)\b', '', teams_str, flags=re.IGNORECASE)
-    words = [w[0].upper() for w in clean_title.split() if w[0].isalnum()]
-    initials = "".join(words[:3]) if words else "FB"
-    
-    # Tạo Logo Badge HD sắc nét từ ui-avatars
-    return f"https://ui-avatars.com/api/?name={initials}&background=random&color=fff&size=256&bold=true&length=3"
+    # 2. Sử dụng Logo Gà Vàng TV làm mặc định cho tất cả trận đấu CLB / Không phải ĐTQG
+    return GAVANG_LOGO
 
 def clean_word(w: str) -> str:
     w_low = w.lower()
@@ -302,7 +296,7 @@ def run_scraper():
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
                 teams_str = parse_teams_from_url(url) or "Trận đấu Trực Tiếp"
 
-                # Khớp Cờ quốc gia tự động / Tạo Badge Logo sắc nét
+                # Khớp Cờ quốc gia tự động / Hoặc gán Logo Gà Vàng TV
                 logo = get_team_logo_url(teams_str)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
