@@ -2,7 +2,7 @@ import time
 import re
 import json
 from datetime import datetime, timezone, timedelta
-from urllib.parse import quote, urljoin
+from urllib.parse import quote
 from playwright.sync_api import sync_playwright
 
 WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
@@ -10,12 +10,9 @@ BASE_URL = "https://gavang33.live"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "🐔 Vàng 33 TV"
 
-# Từ khóa nhận diện ảnh avatar BLV để LỌC BỎ
-BLV_KEYWORDS = ['blv', 'caster', 'avatar', 'ga-', 'sieu-', 'commentator', 'mc-', 'admin', 'user']
-
-# Bảng tra cứu cờ quốc gia mở rộng
+# Bảng tra cứu cờ quốc gia & CLB (Tự động mở rộng khớp tên)
 LOGOS = {
-    # Châu Á & Đông Nam Á
+    # Đông Nam Á & Châu Á
     "vietnam": "https://flagcdn.com/w320/vn.png", "việt nam": "https://flagcdn.com/w320/vn.png",
     "philippines": "https://flagcdn.com/w320/ph.png",
     "thailand": "https://flagcdn.com/w320/th.png", "thái lan": "https://flagcdn.com/w320/th.png",
@@ -56,30 +53,16 @@ LOGOS = {
     "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png"
 }
 
-def is_blv_avatar(url_str: str) -> bool:
-    """Kiểm tra xem URL ảnh có phải là Avatar của BLV hay không"""
-    if not url_str:
-        return True
-    u_low = url_str.lower()
-    return any(k in u_low for k in BLV_KEYWORDS)
+# Icon quả bóng đá mặc định nếu không khớp tên trong LOGOS
+DEFAULT_SOCCER_ICON = "https://cdn-icons-png.flaticon.com/512/53/53283.png"
 
-def get_team_logo_url(teams_str: str, web_logo_url: str = "") -> str:
-    """Ưu tiên lấy logo từ WEB (nếu không phải ảnh BLV), nếu không có thì tra từ điển LOGOS"""
-    if web_logo_url and not is_blv_avatar(web_logo_url) and not web_logo_url.startswith("data:image"):
-        if web_logo_url.startswith("//"):
-            return "https:" + web_logo_url
-        elif web_logo_url.startswith("http"):
-            return web_logo_url
-        elif web_logo_url.startswith("/"):
-            return urljoin(BASE_URL, web_logo_url)
-
-    # Tra cứu chính xác theo tên đội bóng / quốc gia
+def get_team_logo_url(teams_str: str) -> str:
+    """Tự động khớp logo/cờ hoàn toàn dựa theo Tên đội bóng"""
     t_lower = teams_str.lower()
     for key, url in LOGOS.items():
         if key in t_lower:
             return url
-            
-    return "https://flagcdn.com/w320/un.png"
+    return DEFAULT_SOCCER_ICON
 
 def clean_word(w: str) -> str:
     w_low = w.lower()
@@ -254,7 +237,7 @@ def run_scraper():
                 page.evaluate("window.scrollBy(0, 800)")
                 time.sleep(0.5)
 
-            # Cào dữ liệu DOM và loại bỏ ngay ảnh avatar BLV ở JS level
+            # Cào dữ liệu thẻ trận đấu (Hoàn toàn không đụng vào thẻ <img> nữa)
             raw_matches = page.evaluate('''() => {
                 const matches = [];
                 const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"], a[href*="/phong/"], a[href*="/truc-tiep-bong-da/"], a[href*="/xem-bong-da/"]'));
@@ -279,21 +262,9 @@ def run_scraper():
                         }
                     }
 
-                    // Tìm ảnh logo hợp lệ (bỏ qua ảnh có tên chứa từ khóa avatar BLV)
-                    let logoUrl = "";
-                    const imgs = Array.from(card.querySelectorAll('img'));
-                    for (let img of imgs) {
-                        const src = img.src || img.getAttribute('data-src') || "";
-                        if (src && !/(blv|caster|avatar|ga-|sieu-|commentator)/i.test(src)) {
-                            logoUrl = src;
-                            break;
-                        }
-                    }
-
                     matches.push({
                         url: fullUrl,
-                        fullText: card ? card.innerText || '' : link.innerText || '',
-                        webLogo: logoUrl
+                        fullText: card ? card.innerText || '' : link.innerText || ''
                     });
                 });
 
@@ -301,11 +272,11 @@ def run_scraper():
             }''')
 
             page.close()
-            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang ghép logo và sắp xếp...")
+            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang gán cờ/logo theo tên đội...")
 
             parsed_items = []
             for item in raw_matches:
-                text, url, web_logo = item['fullText'], item['url'], item['webLogo']
+                text, url = item['fullText'], item['url']
                 if not text: continue
 
                 details = get_match_details(context, url)
@@ -325,8 +296,8 @@ def run_scraper():
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
                 teams_str = parse_teams_from_url(url) or "Trận đấu Trực Tiếp"
 
-                # Lấy logo đội bóng (không còn bị nhầm sang avatar BLV)
-                logo = get_team_logo_url(teams_str, web_logo)
+                # Lấy logo chuẩn 100% dựa theo tên đội bóng
+                logo = get_team_logo_url(teams_str)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
                 if is_currently_live:
