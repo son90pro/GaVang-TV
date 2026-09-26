@@ -1,4 +1,4 @@
-#EXTM3U tvg-shift="0"
+#EXTM3U tvg-shift="0" tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg"
 
 #EXTINF:-1 tvg-logo="https://flagcdn.com/w320/sv.png" group-title="🐔 Vàng 33 TV",[26/09 - 🔴 LIVE 10:00] El Salvador vs Martinique (Gà Siêu Tồ)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
