@@ -10,66 +10,73 @@ BASE_URL = "https://gavang33.live"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "🐔 Vàng 33 TV"
 
-# Bảng tra cứu cờ quốc gia & CLB (Tự động mở rộng khớp tên)
-LOGOS = {
-    # Đông Nam Á & Châu Á
-    "vietnam": "https://flagcdn.com/w320/vn.png", "việt nam": "https://flagcdn.com/w320/vn.png",
-    "philippines": "https://flagcdn.com/w320/ph.png",
-    "thailand": "https://flagcdn.com/w320/th.png", "thái lan": "https://flagcdn.com/w320/th.png",
-    "pakistan": "https://flagcdn.com/w320/pk.png",
-    "indonesia": "https://flagcdn.com/w320/id.png", "malaysia": "https://flagcdn.com/w320/my.png",
-    "japan": "https://flagcdn.com/w320/jp.png", "nhật bản": "https://flagcdn.com/w320/jp.png",
-    "south korea": "https://flagcdn.com/w320/kr.png", "hàn quốc": "https://flagcdn.com/w320/kr.png",
-    "china": "https://flagcdn.com/w320/cn.png", "trung quốc": "https://flagcdn.com/w320/cn.png",
-    "nantong zhiyun": "https://flagcdn.com/w320/cn.png", "changchun yatai": "https://flagcdn.com/w320/cn.png",
+# Từ điển cờ TẤT CẢ quốc gia & vùng lãnh thổ trên thế giới (Tiếng Anh & Tiếng Việt)
+COUNTRY_FLAGS = {
+    # Châu Á & Đông Nam Á
+    "vietnam": "vn", "việt nam": "vn", "philippines": "ph", "thailand": "th", "thái lan": "th",
+    "pakistan": "pk", "indonesia": "id", "malaysia": "my", "singapore": "sg", "myanmar": "mm",
+    "cambodia": "kh", "laos": "la", "japan": "jp", "nhật bản": "jp", "south korea": "kr", "hàn quốc": "kr",
+    "korea": "kr", "china": "cn", "trung quốc": "cn", "india": "in", "ấn độ": "in", "uzbekistan": "uz",
+    "iraq": "iq", "iran": "ir", "saudi arabia": "sa", "ả rập xê út": "sa", "qatar": "qa", "uae": "ae",
+    "australia": "au", "úc": "au", "jordan": "jo", "bahrain": "bh", "syria": "sy", "omman": "om",
+    "palestine": "ps", "lebanon": "lb", "kuwait": "kw", "yemen": "ye", "kyrgyzstan": "kg", "tajikistan": "tj",
 
-    # CONCACAF & Bắc/Trung Mỹ
-    "el salvador": "https://flagcdn.com/w320/sv.png",
-    "martinique": "https://flagcdn.com/w320/mq.png",
-    "barbados": "https://flagcdn.com/w320/bb.png",
-    "saint lucia": "https://flagcdn.com/w320/lc.png",
-    "bonaire": "https://flagcdn.com/w320/bq.png",
-    "saint kitts": "https://flagcdn.com/w320/kn.png",
-    "jamaica": "https://flagcdn.com/w320/jm.png",
-    "guatemala": "https://flagcdn.com/w320/gt.png",
-    "honduras": "https://flagcdn.com/w320/hn.png",
-    "suriname": "https://flagcdn.com/w320/sr.png",
-    "mexico": "https://flagcdn.com/w320/mx.png",
-    "usa": "https://flagcdn.com/w320/us.png", "mỹ": "https://flagcdn.com/w320/us.png",
+    # Châu Âu
+    "slovenia": "si", "scotland": "gb-sct", "england": "gb-eng", "anh": "gb-eng", "wales": "gb-wls",
+    "northern ireland": "gb-nir", "spain": "es", "tây ban nha": "es", "france": "fr", "pháp": "fr",
+    "germany": "de", "đức": "de", "italy": "it", "ý": "it", "netherlands": "nl", "hà lan": "nl",
+    "portugal": "pt", "bồ đào nha": "pt", "belgium": "be", "bỉ": "be", "croatia": "hr", "denmark": "dk",
+    "đan mạch": "dk", "sweden": "se", "thụy điển": "se", "norway": "no", "nau uy": "no", "switzerland": "ch",
+    "thụy sĩ": "ch", "austria": "at", "áo": "at", "poland": "pl", "ba lan": "pl", "ukraine": "ua",
+    "czech": "cz", "séc": "cz", "serbia": "rs", "turkey": "tr", "thổ nhĩ kỳ": "tr", "russia": "ru", "nga": "ru",
+    "greece": "gr", "hy lạp": "gr", "romania": "ro", "hungary": "hu", "slovakia": "sk", "finland": "fi",
+    " phần lan": "fi", "ireland": "ie", "iceland": "is", "albania": "al", "bosnia": "ba", "macedonia": "mk",
+    "georgia": "ge", "armenia": "am", "azerbaijan": "az", "cyprus": "cy", "estonia": "ee", "latvia": "lv",
+    "lithuania": "lt", "luxembourg": "lu", "malta": "mt", "moldova": "md", "montenegro": "me", "san marino": "sm",
 
-    # Châu Âu & Nga
-    "russia": "https://flagcdn.com/w320/ru.png", "nga": "https://flagcdn.com/w320/ru.png",
-    "fk chelyabinsk": "https://flagcdn.com/w320/ru.png", "chelyabinsk": "https://flagcdn.com/w320/ru.png",
-    "yenisey": "https://flagcdn.com/w320/ru.png",
-    "netherlands": "https://flagcdn.com/w320/nl.png", "hà lan": "https://flagcdn.com/w320/nl.png",
-    "germany": "https://flagcdn.com/w320/de.png", "đức": "https://flagcdn.com/w320/de.png",
-    "spain": "https://flagcdn.com/w320/es.png", "tây ban nha": "https://flagcdn.com/w320/es.png",
-    "france": "https://flagcdn.com/w320/fr.png", "pháp": "https://flagcdn.com/w320/fr.png",
-    "italy": "https://flagcdn.com/w320/it.png", "ý": "https://flagcdn.com/w320/it.png",
-    "england": "https://flagcdn.com/w320/gb-eng.png", "anh": "https://flagcdn.com/w320/gb-eng.png",
+    # Châu Phi
+    "south africa": "za", "nam phi": "za", "guinea": "gn", "equatorial guinea": "gq", "kenya": "ke",
+    "eritrea": "er", "egypt": "eg", "ai cập": "eg", "morocco": "ma", "ma rốc": "ma", "senegal": "sn",
+    "algeria": "dz", "nigeria": "ng", "cameroon": "cm", "ghana": "gh", "ivory coast": "ci", "bờ biển ngà": "ci",
+    "tunisia": "tn", "mali": "ml", "burkina faso": "bf", "congo": "cg", "dr congo": "cd", "zambia": "zm",
+    "gabon": "ga", "angola": "ao", "uganda": "ug", "mozambique": "mz", "madagascar": "mg", "sudan": "sd",
+
+    # Bắc, Trung Mỹ & CONCACAF
+    "usa": "us", "mỹ": "us", "mexico": "mx", "canada": "ca", "costa rica": "cr", "panama": "pa",
+    "jamaica": "jm", "honduras": "hn", "el salvador": "sv", "guatemala": "gt", "haiti": "ht",
+    "trinidad": "tt", "martinique": "mq", "curacao": "cw", "barbados": "bb", "saint lucia": "lc",
 
     # Nam Mỹ
-    "brazil": "https://flagcdn.com/w320/br.png", "argentina": "https://flagcdn.com/w320/ar.png",
-    "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png"
+    "brazil": "br", "argentina": "ar", "uruguay": "uy", "colombia": "co", "chile": "cl",
+    "peru": "pe", "ecuador": "ec", "paraguay": "py", "venezuela": "ve", "bolivia": "bo"
 }
 
-# Icon quả bóng đá mặc định nếu không khớp tên trong LOGOS
-DEFAULT_SOCCER_ICON = "https://cdn-icons-png.flaticon.com/512/53/53283.png"
-
 def get_team_logo_url(teams_str: str) -> str:
-    """Tự động khớp logo/cờ hoàn toàn dựa theo Tên đội bóng"""
+    """Tự động tìm Cờ quốc gia 100% hoặc tạo Badge chữ nghệ thuật cho CLB"""
     t_lower = teams_str.lower()
-    for key, url in LOGOS.items():
-        if key in t_lower:
-            return url
-    return DEFAULT_SOCCER_ICON
+    
+    # 1. Quét tìm cờ Quốc gia xuất hiện trong tên trận đấu
+    for country_name, code in COUNTRY_FLAGS.items():
+        # Dùng regex bound để tránh khớp nhầm từ con
+        pattern = r'\b' + re.escape(country_name) + r'\b'
+        if re.search(pattern, t_lower):
+            return f"https://flagcdn.com/w320/{code}.png"
+
+    # 2. Nếu là Câu Lạc Bộ (Không có trong từ điển Cờ ĐTQG):
+    # Tạo Badge biểu tượng đẹp mắt theo tên viết tắt của Đội thay vì dùng hình quả bóng đen
+    clean_title = re.sub(r'\b(vs|v|nữ|women|u23|u21|u19|u17)\b', '', teams_str, flags=re.IGNORECASE)
+    words = [w[0].upper() for w in clean_title.split() if w[0].isalnum()]
+    initials = "".join(words[:3]) if words else "FB"
+    
+    # Tạo Logo Badge HD sắc nét từ ui-avatars
+    return f"https://ui-avatars.com/api/?name={initials}&background=random&color=fff&size=256&bold=true&length=3"
 
 def clean_word(w: str) -> str:
     w_low = w.lower()
     if w_low in ['nu', 'nữ', 'women']: return 'Women' if w_low == 'women' else 'Nữ'
     if w_low in ['nam', 'men']: return 'Men' if w_low == 'men' else 'Nam'
     if w_low in ['u23', 'u21', 'u20', 'u19', 'u18', 'u17', 'u16', 'u15']: return w.upper()
-    if w_low in ['ir', 'uae', 'usa', 'uk', 'fk']: return w.upper()
+    if w_low in ['ir', 'uae', 'usa', 'uk', 'fk', 'ad', 'real']: return w.upper() if len(w_low) <= 3 else w.capitalize()
     return w.capitalize()
 
 def parse_teams_from_url(url: str) -> str:
@@ -237,7 +244,6 @@ def run_scraper():
                 page.evaluate("window.scrollBy(0, 800)")
                 time.sleep(0.5)
 
-            # Cào dữ liệu thẻ trận đấu (Hoàn toàn không đụng vào thẻ <img> nữa)
             raw_matches = page.evaluate('''() => {
                 const matches = [];
                 const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"], a[href*="/phong/"], a[href*="/truc-tiep-bong-da/"], a[href*="/xem-bong-da/"]'));
@@ -272,7 +278,7 @@ def run_scraper():
             }''')
 
             page.close()
-            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang gán cờ/logo theo tên đội...")
+            print(f"[*] Quét được {len(raw_matches)} trận đấu. Đang nhận diện Cờ/Logo hoàn chỉnh...")
 
             parsed_items = []
             for item in raw_matches:
@@ -296,7 +302,7 @@ def run_scraper():
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
                 teams_str = parse_teams_from_url(url) or "Trận đấu Trực Tiếp"
 
-                # Lấy logo chuẩn 100% dựa theo tên đội bóng
+                # Khớp Cờ quốc gia tự động / Tạo Badge Logo sắc nét
                 logo = get_team_logo_url(teams_str)
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
 
@@ -356,7 +362,7 @@ def run_scraper():
             f.write(f'#EXTVLCOPT:http-referrer={BASE_URL}/\n')
             f.write(f'{stream_url}\n\n')
 
-    print(f"[*] Đã xuất {len(final_matches)} trận vào file {OUTPUT_FILE} thành công!")
+    print(f"[*] Đã hoàn tất! Xuất {len(final_matches)} trận vào {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
