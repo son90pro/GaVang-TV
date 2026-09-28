@@ -1,55 +1,5 @@
 #EXTM3U tvg-shift="0" tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg"
 
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" group-title="🐔 Vàng 33 TV",[28/09 - 🔴 LIVE 22:00] Leixoes U23 vs Vizela U23 (Gà Siêu Tốc)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F307240.m3u8
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/ua.png" group-title="🐔 Vàng 33 TV",[28/09 - 🔴 LIVE 23:00] Georgia vs Ukraine (Gà Siêu Ngố)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F301238.m3u8
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/am.png" group-title="🐔 Vàng 33 TV",[28/09 - 🔴 LIVE 23:00] Armenia vs Montenegro (Gà Siêu Péo)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F303098.m3u8
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/cy.png" group-title="🐔 Vàng 33 TV",[28/09 - 🔴 LIVE 23:00] Latvia vs Cyprus (Gà Siêu Kiêu)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F741294.m3u8
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Belgium vs France (Gà Siêu Gáy)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fbelgium-vs-france-luc-0145-ngay-29-09-2026-y0or5jh89ywjqwz%3FanchorId%3D6a68b4c60f5c6246168b1fa1
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Belgium vs France (Gà Siêu Bệu)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fbelgium-vs-france-luc-0145-ngay-29-09-2026-y0or5jh89ywjqwz%3FanchorId%3D69fc585e696b57b6f1dae26b
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/it.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Turkiye vs Italy (Gà Ô Long)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fturkiye-vs-italy-luc-0145-ngay-29-09-2026-n54qllhn4gw1qvy%3FanchorId%3D6a31da2f9a2eb0e4aaedf62e
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/gb-nir.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Northern Ireland vs Hungary (Gà Siêu Ngố)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fnorthern-ireland-vs-hungary-luc-0145-ngay-29-09-2026-zp5rzghg3vd6q82%3FanchorId%3D6aa136bffcdef77bf7fcc812
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/ro.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Romania vs Bosnia And (Gà Siêu Kiêu)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fromania-vs-bosnia-and-herzegovina-luc-0145-ngay-29-09-2026-1l4rjnh9nod4m7v%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/se.png" group-title="🐔 Vàng 33 TV",[29/09 - 01:45] Sweden vs Poland (Gà Siêu Tốc)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
-#EXTVLCOPT:http-referrer=https://gavang33.live/
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fsweden-vs-poland-luc-0145-ngay-29-09-2026-4jwq2ghngy5nm0v%3FanchorId%3D69fcb2b17f55d5be198f16aa
-
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" group-title="🐔 Vàng 33 TV",[29/09 - 07:00] Saint Kitts And Nevis vs Grenada (Gà Siêu Nhí)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTVLCOPT:http-referrer=https://gavang33.live/
@@ -234,4 +184,24 @@ https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavan
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 #EXTVLCOPT:http-referrer=https://gavang33.live/
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Feritrea-vs-south-africa-luc-2300-ngay-30-09-2026-n54qllhnv0jwqvy%3FanchorId%3D6a78aab67e077ab7a1f9af59
+
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/lt.png" group-title="🐔 Vàng 33 TV",[30/09 - 23:00] Lithuania vs Andorra (Gà Siêu Bệu)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+#EXTVLCOPT:http-referrer=https://gavang33.live/
+https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Flithuania-vs-andorra-luc-2300-ngay-30-09-2026-965mkyh8l573r1g%3FanchorId%3D69fc585e696b57b6f1dae26b
+
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" group-title="🐔 Vàng 33 TV",[30/09 - 23:45] As Roma Women vs Barcelona Women (Gà Siêu Kiêu)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+#EXTVLCOPT:http-referrer=https://gavang33.live/
+https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fas-roma-women-vs-barcelona-women-luc-2345-ngay-30-09-2026-4jwq2ghgok2jm0v%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
+
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" group-title="🐔 Vàng 33 TV",[30/09 - 23:45] Bk Hacken Women vs Juventus Women (Gà Siêu Tồ)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+#EXTVLCOPT:http-referrer=https://gavang33.live/
+https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fbk-hacken-women-vs-juventus-women-luc-2345-ngay-30-09-2026-ednm9wh589nyryo%3FanchorId%3D6aa14fd12a33b8ed65eea01c
+
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/6pt402sd/logo-gavangtv.jpg" group-title="🐔 Vàng 33 TV",[30/09 - 23:45] Paris Fc Women vs Arsenal Women (Gà Siêu Nhí)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+#EXTVLCOPT:http-referrer=https://gavang33.live/
+https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fparis-fc-women-vs-arsenal-women-luc-2345-ngay-30-09-2026-965mkyh8l4vvr1g%3FanchorId%3D6aa14ecd419a47d5e57cb691
 
