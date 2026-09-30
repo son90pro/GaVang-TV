@@ -1,1 +1,35 @@
+name: Update Gà Vàng 33 M3U Playlist
 
+on:
+  schedule:
+    # Tự động chạy mỗi 30 phút một lần
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # Cho phép bấm chạy thủ công trên GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run script to generate M3U
+        run: python generate_m3u.py
+
+      - name: Commit and Push M3U file
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add gavang33.m3u
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update gavang33.m3u" && git push)
+          
