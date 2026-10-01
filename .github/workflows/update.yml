@@ -2,9 +2,9 @@ name: Update Gà Vàng 33 M3U Playlist
 
 on:
   schedule:
-    # Tự động chạy mỗi 30 phút một lần
-    - cron: '*/30 * * * *'
-  workflow_dispatch: # Cho phép bấm chạy thủ công trên GitHub
+    # Tự động chạy vào phút thứ 0 của mỗi giờ (1 tiếng / lần)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Cho phép bấm chạy thủ công trên GitHub khi cần
 
 jobs:
   build:
