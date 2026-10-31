@@ -1,193 +1,23 @@
 #EXTM3U x-tvg-url=""
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/7f95b001711ce3978d498602e1d2c9fd.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ Song Lam Nghe An vs Cong An Ha Noi FC (Gà Siêu Son) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/306290.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/7f95b001711ce3978d498602e1d2c9fd.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ Song Lam Nghe An vs Cong An Ha Noi FC (Gà Siêu Son) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/306290.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/bc5db4dd418cb566a4475649876b55bb.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ Thep Xanh Nam Dinh FC vs The Cong-Viettel (Gà Siêu Mõm) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/300523.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/bc5db4dd418cb566a4475649876b55bb.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ Thep Xanh Nam Dinh FC vs The Cong-Viettel (Gà Siêu Mõm) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/300523.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/fed18f35e0d187fb4c812f24a97c3e6a.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ XM Hai Phong FC vs Dong Nai (Gà Siêu Nhí) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/301263.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/fed18f35e0d187fb4c812f24a97c3e6a.png" group-title="Gà Vàng 33 TV",18:00 31/10 ⚽ XM Hai Phong FC vs Dong Nai (Gà Siêu Nhí) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/301263.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/0d447cac1c3b5312ea69fcc7e55e9a9d.png" group-title="Gà Vàng 33 TV",17:30 31/10 ⚽ Erzurumspor FK vs Corum FK (Gà Siêu Bệu) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/289650.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/0d447cac1c3b5312ea69fcc7e55e9a9d.png" group-title="Gà Vàng 33 TV",17:30 31/10 ⚽ Erzurumspor FK vs Corum FK (Gà Siêu Bệu) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/289650.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/a0cf8f551e9440acb3f4ff533dcc58a4.png" group-title="Gà Vàng 33 TV",19:30 31/10 ⚽ Chelsea vs Manchester United (Gà Siêu Phệ + Gà Siêu Quỷ) [hls]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/8b22ab4041e666b996a2d96f20dea707.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ Tottenham Hotspur vs Crystal Palace (Gà Siêu Phệ + Gà Siêu Quỷ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/304565.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/a0cf8f551e9440acb3f4ff533dcc58a4.png" group-title="Gà Vàng 33 TV",19:30 31/10 ⚽ Chelsea vs Manchester United (Gà Siêu Phệ + Gà Siêu Quỷ) [flv]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/8b22ab4041e666b996a2d96f20dea707.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ Tottenham Hotspur vs Crystal Palace (Gà Siêu Phệ + Gà Siêu Quỷ) [flv]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/304565.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/a0cf8f551e9440acb3f4ff533dcc58a4.png" group-title="Gà Vàng 33 TV",19:30 31/10 ⚽ Chelsea vs Manchester United (Gà Siêu Gáy + Gà Siêu Ngố) [hls]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ef19a84a6745fe57aa786873d2b18e8a.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ FC Bayern Munich vs Borussia Dortmund (Gà Siêu Gáy + Gà Siêu Ngố) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/294335.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/a0cf8f551e9440acb3f4ff533dcc58a4.png" group-title="Gà Vàng 33 TV",19:30 31/10 ⚽ Chelsea vs Manchester United (Gà Siêu Gáy + Gà Siêu Ngố) [flv]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ef19a84a6745fe57aa786873d2b18e8a.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ FC Bayern Munich vs Borussia Dortmund (Gà Siêu Gáy + Gà Siêu Ngố) [flv]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/294335.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/13e2038bd23a38ce32a3eb259c8bf7d8.png" group-title="Gà Vàng 33 TV",20:00 31/10 ⚽ Levante vs Atletico Madrid (Gà Siêu Péo) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/303098.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/13e2038bd23a38ce32a3eb259c8bf7d8.png" group-title="Gà Vàng 33 TV",20:00 31/10 ⚽ Levante vs Atletico Madrid (Gà Siêu Péo) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/303098.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/bd12298fc3920bc20b7ad43b16ad9624.png" group-title="Gà Vàng 33 TV",21:00 31/10 ⚽ Bologna vs Monza (Gà Siêu Tốc) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/307240.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/bd12298fc3920bc20b7ad43b16ad9624.png" group-title="Gà Vàng 33 TV",21:00 31/10 ⚽ Bologna vs Monza (Gà Siêu Tốc) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/307240.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/f15ae3ec9b2d7888180a6c8cf4b137e8.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Bayer 04 Leverkusen vs VfB Stuttgart (Gà Siêu Kiêu) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/741294.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/f15ae3ec9b2d7888180a6c8cf4b137e8.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Bayer 04 Leverkusen vs VfB Stuttgart (Gà Siêu Kiêu) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/741294.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/89cdadf6cf1eb6f8d2507de1e01f806c.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Borussia Monchengladbach vs SC Paderborn 07 (Gà Siêu Tồ) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/796315.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/89cdadf6cf1eb6f8d2507de1e01f806c.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Borussia Monchengladbach vs SC Paderborn 07 (Gà Siêu Tồ) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/796315.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/4533ab7ef9ad5e53c981f7ea7bea7033.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Schalke 04 vs RB Leipzig (Gà Siêu Nhí) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/301263.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/4533ab7ef9ad5e53c981f7ea7bea7033.png" group-title="Gà Vàng 33 TV",21:30 31/10 ⚽ Schalke 04 vs RB Leipzig (Gà Siêu Nhí) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/301263.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/240b30d333c97d293752ab7afd77ccd6.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Bournemouth AFC vs Leeds United (Gà Ô Long) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/432017.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/240b30d333c97d293752ab7afd77ccd6.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Bournemouth AFC vs Leeds United (Gà Ô Long) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/432017.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/60f1c7788be3148a370dbf59f914abfe.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Brentford vs Nottingham Forest (Gà Siêu Bệu) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/289650.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/60f1c7788be3148a370dbf59f914abfe.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Brentford vs Nottingham Forest (Gà Siêu Bệu) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/289650.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/759f19ccaecadd33a5c09b535e543410.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Coventry City vs Sunderland (Gà Siêu Son) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/306290.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/759f19ccaecadd33a5c09b535e543410.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Coventry City vs Sunderland (Gà Siêu Son) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/306290.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/262691204102d2200797f0ac34efb316.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Hull City vs Ipswich Town (Gà Siêu Mõm) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/300523.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/262691204102d2200797f0ac34efb316.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Hull City vs Ipswich Town (Gà Siêu Mõm) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/300523.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/c4a6528a2ee147b99c9885ef24385a4e.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Manchester City vs Brighton Hove Albion (Gà Siêu Phệ + Gà Siêu Quỷ) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/304565.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/c4a6528a2ee147b99c9885ef24385a4e.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Manchester City vs Brighton Hove Albion (Gà Siêu Phệ + Gà Siêu Quỷ) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/304565.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/c4a6528a2ee147b99c9885ef24385a4e.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Manchester City vs Brighton Hove Albion (Gà Siêu Gáy + Gà Siêu Ngố) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/294335.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/c4a6528a2ee147b99c9885ef24385a4e.png" group-title="Gà Vàng 33 TV",22:00 31/10 ⚽ Manchester City vs Brighton Hove Albion (Gà Siêu Gáy + Gà Siêu Ngố) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/294335.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ee5b1bcc98e7232350988a477974fb26.png" group-title="Gà Vàng 33 TV",22:30 31/10 ⚽ Moreirense vs CF Estrela Amadora SAD (Gà Siêu Péo) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/303098.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ee5b1bcc98e7232350988a477974fb26.png" group-title="Gà Vàng 33 TV",22:30 31/10 ⚽ Moreirense vs CF Estrela Amadora SAD (Gà Siêu Péo) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/303098.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/dff00f1fd4a7dd2feac000b462416867.png" group-title="Gà Vàng 33 TV",23:00 31/10 ⚽ Fenerbahce vs Goztepe (Gà Siêu Tốc) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/307240.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/dff00f1fd4a7dd2feac000b462416867.png" group-title="Gà Vàng 33 TV",23:00 31/10 ⚽ Fenerbahce vs Goztepe (Gà Siêu Tốc) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/307240.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/c7140efe06d93642fcc9805077c49aa5.png" group-title="Gà Vàng 33 TV",00:00 01/11 ⚽ Udinese vs AS Roma (Gà Siêu Kiêu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
@@ -199,16 +29,6 @@ https://live2.zktsva.app/live/741294.m3u8|Referer=https://gavang33.live&User-Age
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/741294.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/8b22ab4041e666b996a2d96f20dea707.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ Tottenham Hotspur vs Crystal Palace (Gà Siêu Phệ + Gà Siêu Quỷ) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/304565.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/8b22ab4041e666b996a2d96f20dea707.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ Tottenham Hotspur vs Crystal Palace (Gà Siêu Phệ + Gà Siêu Quỷ) [flv]
-#EXTVLCOPT:http-referrer=https://gavang33.live
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/304565.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
-
 #EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/018e260ad68bdad741c61e3171c4c608.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ Real Betis vs Malaga (Gà Siêu Tồ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
@@ -219,15 +39,15 @@ https://live2.zktsva.app/live/796315.m3u8|Referer=https://gavang33.live&User-Age
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/796315.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ef19a84a6745fe57aa786873d2b18e8a.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ FC Bayern Munich vs Borussia Dortmund (Gà Siêu Gáy + Gà Siêu Ngố) [hls]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/dff00f1fd4a7dd2feac000b462416867.png" group-title="Gà Vàng 33 TV",23:00 31/10 ⚽ Fenerbahce vs Goztepe (Gà Siêu Tốc) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/294335.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/307240.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/ef19a84a6745fe57aa786873d2b18e8a.png" group-title="Gà Vàng 33 TV",00:30 01/11 ⚽ FC Bayern Munich vs Borussia Dortmund (Gà Siêu Gáy + Gà Siêu Ngố) [flv]
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/dff00f1fd4a7dd2feac000b462416867.png" group-title="Gà Vàng 33 TV",23:00 31/10 ⚽ Fenerbahce vs Goztepe (Gà Siêu Tốc) [flv]
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://live2.zktsva.app/live/294335.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/307240.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/07a555616afab7be32e00150eacf4197.png" group-title="Gà Vàng 33 TV",01:00 01/11 ⚽ Al Hilal vs Al Fateh (Gà Siêu Bệu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
@@ -258,6 +78,16 @@ https://live2.zktsva.app/live/300523.m3u8|Referer=https://gavang33.live&User-Age
 #EXTVLCOPT:http-referrer=https://gavang33.live
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://live2.zktsva.app/live/300523.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
+
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/f378eb1ea04e53999b89051aa3244de6.png" group-title="Gà Vàng 33 TV",03:00 01/11 ⚽ FC Barcelona vs Deportivo Alavés (Gà Siêu Phệ + Gà Siêu Quỷ) [hls]
+#EXTVLCOPT:http-referrer=https://gavang33.live
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://live2.zktsva.app/live/304565.m3u8|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
+
+#EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/f378eb1ea04e53999b89051aa3244de6.png" group-title="Gà Vàng 33 TV",03:00 01/11 ⚽ FC Barcelona vs Deportivo Alavés (Gà Siêu Phệ + Gà Siêu Quỷ) [flv]
+#EXTVLCOPT:http-referrer=https://gavang33.live
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://live2.zktsva.app/live/304565.flv|Referer=https://gavang33.live&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.cltvap.cc/football/team/f378eb1ea04e53999b89051aa3244de6.png" group-title="Gà Vàng 33 TV",03:00 01/11 ⚽ FC Barcelona vs Deportivo Alavés (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.live
